@@ -1,1 +1,1 @@
-[!NOTE] modal window educational project
+>[!NOTE] modal window educational project
