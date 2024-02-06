@@ -11,11 +11,20 @@ function openModal() {
 function attachModalEvents() {
   modal.querySelector('.close').addEventListener('click', closeModal);
   document.addEventListener('keydown', handleEscape);
+  modal.addEventListener('click', handleOutside);
 }
 
 function handleEscape(event) {
   console.log(event.key);
   if (event.key === 'Escape') {
+    closeModal();
+  }
+}
+
+function handleOutside(event) {
+  const isClickOutside = !!event.target.closest('.modal-content');
+
+  if (!isClickOutside) {
     closeModal();
   }
 }
@@ -27,4 +36,5 @@ function closeModal() {
 function detachModalEvents() {
   modal.querySelector('.close').removeEventListener('click', closeModal);
   document.removeEventListener('keydown', handleEscape);
+  modal.addEventListener('click', handleOutside);
 }
